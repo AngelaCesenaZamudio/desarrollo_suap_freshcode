@@ -7,6 +7,7 @@ package mx.desarrollo.integracion;
 
 import mx.desarrollo.DAO.AlumnoDAO;
 import mx.desarrollo.DAO.UsuarioDAO;
+import mx.desarrollo.DAO.unidadAprendizajeDAO;
 
 
 /**
@@ -17,6 +18,8 @@ public class ServiceLocator {
     
     private static AlumnoDAO alumnoDAO;
     private static UsuarioDAO usuarioDAO;
+    private static unidadAprendizajeDAO unidadDAO;
+    
     /**
      * se crea la instancia para alumno DAO si esta no existe
      */
@@ -40,4 +43,12 @@ public class ServiceLocator {
         }
     }
     
+    public static unidadAprendizajeDAO getInstanceunidadAprendizajeDAO(){
+        if(unidadDAO == null){
+            unidadDAO = new unidadAprendizajeDAO();
+            return unidadDAO;
+        } else{
+            return unidadDAO;
+        }
+    }
 }

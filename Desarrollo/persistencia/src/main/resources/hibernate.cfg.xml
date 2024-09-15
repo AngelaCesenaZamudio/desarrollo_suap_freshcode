@@ -17,14 +17,15 @@
 <property name="c3p0.initialPoolSize">5</property>
 <property name="c3p0.idle_test_period">100</property>
 <property name="hibernate.show_sql">true</property>
-
 <property name="c3p0.max_size">50</property>
 <property name="c3p0.max_statements">0</property>
 <property name="c3p0.min_size">5</property>
 <property name="c3p0.timeout">100</property>
-<!-- Nota: Aqui deben ir todas las entidades que se formaron de su base de datos
-en este caso se crearon las siguiente -->
+
+<!-- Nota: Aqui deben ir todas las entidades que se formaron de su base de
+datos en este caso se crearon las siguiente -->
 <mapping class="mx.desarrollo.entidad.Alumno"/>
 <mapping class="mx.desarrollo.entidad.Usuario"/>
+<mapping class="mx.suap.UnidadAprendizaje.entidad.UnidadAprendizaje"/>
 </session-factory>
 </hibernate-configuration>
