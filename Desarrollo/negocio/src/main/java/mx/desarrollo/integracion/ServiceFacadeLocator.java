@@ -6,16 +6,15 @@
 package mx.desarrollo.integracion;
 
 import mx.desarrollo.facade.FacadeAlumno;
+import mx.desarrollo.facade.FacadeUnidadAprendizaje;
 import mx.desarrollo.facade.FacadeUsuario;
 
-/**
- *
- * @author EduardoCardona <>
- */
+ 
 public class ServiceFacadeLocator {
     
     private static FacadeAlumno facadeAlumno;
     private static FacadeUsuario facadeUsuario;
+    private static FacadeUnidadAprendizaje facadeunidad;
     
     public static FacadeAlumno getInstanceFacadeAlumno() {
         if (facadeAlumno == null) {
@@ -32,6 +31,15 @@ public class ServiceFacadeLocator {
             return facadeUsuario;
         } else {
             return facadeUsuario;
+        }
+    }
+    
+    public static FacadeUnidadAprendizaje getInstanceFacadeUnidadAprendizaje(){
+        if(facadeunidad == null){
+            facadeunidad = new FacadeUnidadAprendizaje();
+            return facadeunidad;
+        }else{
+            return facadeunidad;
         }
     }
 }
