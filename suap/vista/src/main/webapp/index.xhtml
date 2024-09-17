@@ -4,81 +4,148 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui"
       xmlns:jsf="http://xmlns.jcp.org/jsf"
-          
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Menu</title>
     </h:head>
     <h:body>
-        <p:panelGrid class="txt">
-            <f:facet name="header">  
-                <p:row>
-                    <p:column colspan="7"><p:graphicImage url="resources/user.png" class="logo"/></p:column>
-                </p:row>
-            </f:facet>
-            <p:row>
-                <p:column styleClass="celda">Nombre:</p:column>
-                <p:column><h:outputText value="#{loginUI.usuario.idAlumno.nombre}" /></p:column>
-            </p:row>
-            <p:row>
-                <p:column styleClass="celda">Apellido:</p:column>
-                <p:column><h:outputText value="#{loginUI.usuario.idAlumno.apellidos}" /></p:column>
-            </p:row>
-            <p:row>
-                <p:column styleClass="celda">Matricula:</p:column>
-                <p:column><h:outputText value="#{loginUI.usuario.idAlumno.matricula}" /></p:column>
-            </p:row>
-        </p:panelGrid>
         <h:form>
-            <p:menubar style="width: 205px; height: 500px; float: left;">
-                <p:submenu label="Profesores">
-                    <p:menuitem value="Registrar" url="" />
-                    <p:menuitem value="Consultar" url="" />
-                    <p:menuitem value="Eliminar" url="" />
-                </p:submenu>
-                <p:submenu label="Unidad de aprendizaje">
-                    <p:menuitem value="Registrar" url="" />
-                    <p:menuitem value="Consultar" url="" />
-                    <p:menuitem value="Eliminar" url="" />
-                </p:submenu>
-                <p:submenu label="Asignacion de unidad de aprendizaje">
-                    <p:menuitem value="Registrar" url="" />
-                    <p:menuitem value="Consultar" url="" />
-                </p:submenu>
-            </p:menubar>
+            <!-- Menú fijo en la izquierda -->
+            <div class="menu-container">
+                <!-- Sección del logo -->
+               
+                    <p:graphicImage url="imagenes/logo.png" class="logo-image" />
+                
+                 <div class="logo-section">
+                    <!-- Imagen del usuario -->
+                    <p:graphicImage url="resources/user.png" class="user-image" />
+                    
+                    <!-- Nombre del usuario -->
+                    <h:outputText value="#{loginUI.usuario.correo}" class="user-name" />
+                 </div>
+                    
+                    <div class="menu-central">
+                    <!-- Menubar con opciones verticales -->
+                    
+                    <p:menubar styleClass="cam-menubar">
+                        <p:submenu label="Profesores" styleClass="cam-submenu">
+                            <p:menuitem value="Registrar" url="" style="background-color: limegreen; color: white;"/>
+                            <p:menuitem value="Consultar" url="#"  style="background-color: limegreen; color: white;"/>
+                            <p:menuitem value="Eliminar" url="#"  style="background-color: limegreen; color: white;"/>
+                        </p:submenu>
+                        
+                        <p:submenu label="Unidad de Aprendizaje" styleClass="cam-submenu">
+                            <p:menuitem value="Registrar" url="vista_registro_UnidadAprendizaje.xhtml"  style="background-color: limegreen; color: white;"/>
+                            <p:menuitem value="Consultar" url="#"  style="background-color: limegreen; color: white;"/>
+                            <p:menuitem value="Eliminar" url="#"  style="background-color: limegreen; color: white;"/>
+                        </p:submenu>
+                        
+                        <p:submenu label="Asignaciones" styleClass="cam-submenu">
+                            <p:menuitem value="Registrar Asignación" url="#"  style="background-color: limegreen; color: white;"/>
+                            <p:menuitem value="Consultar Asignaciones" url="#"  style="background-color: limegreen; color: white;"/>
+                        </p:submenu>
+                    </p:menubar>
+                </div>
+                    
+            </div>
+
+            <!-- Contenido principal de la página -->
+            <div class="content">
+                <h2 class="titulo">Bienvenido a SUAP</h2>
+                <p class="texto">Esta pagina esta dedicada a la asignacion de materias hacia los profesor al igual que las altas de los profesores</p>
+                <p class="texto">y las altas de las unidades de aprendizaje.</p>
+            </div>
         </h:form>
     </h:body>
     <style>
-        .logo{
-            width: 170px;
-        }
-        .celda{
-            width: 25%;
-            background-color: #089b4d;
-            color:white;
-        }
-        .txt{
-                position: absolute;
-                top:0;
-                bottom: 0;
+            /* Estilos para el contenedor del menú */
+            .menu-container {
+                width: 250px;
+                position: fixed;
+                top: 0;
                 left: 0;
-                right: 0;
-                height: 35%;
-                width: 25%;
-                padding: 25px;
-                margin: auto;
-                background: white;
-                border-radius: 5px;
-                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-            
-        }
-        .ui-menubar{
-            display: block;
-            background-color: red;
-        }
-        .ui-menu-list{
-            display: block;
-        }
-    </style>
-</html>
+                height: 100%;
+                overflow-y: auto;
+                z-index: 1000;
+                padding: 0;
+            }
 
+            /* Estilo para la sección del logo */
+            .logo-section {
+                background-color: limegreen; /* Fondo del logo (color azul) */
+                padding: 20px;
+                text-align: center;
+            }
+            
+            .logo-image{
+            width: 80px;
+            height: 80px;
+            background-color: white;
+            padding: 20px;
+            align-content: center;
+            }
+            
+            /* Estilo para la imagen del usuario */
+            .user-image {
+                width: 70px;
+                height: 90px;
+                border-radius: 50%;
+                margin-bottom: 10px;
+            }
+            
+            /* Estilos para el nombre del usuario */
+            .user-name {
+                font-weight: bold;
+                color: white;
+                margin-bottom: 10px;
+                text-align: center;
+            }
+
+            /* Estilos para el menubar */
+            .ui-menubar {
+                width: 100%;
+            }
+            .ui-menubar-root-list {
+                display: block;
+            }
+            .ui-menuitem-link, .ui-submenu-link{
+                background-color: transparent;
+                color: white; 
+            }
+
+            .content {
+                margin-left: 270px;
+                padding: 20px;
+            }
+            
+            .menu-central{
+                width: 250px;
+                position: fixed;
+                background-color:limegreen;
+                height: 100%;
+            }
+            
+            .cam-menubar{
+                background: none;
+                background-color: transparent;
+                border: none;
+                color: inherit;
+            }
+            
+            .cam-submenu{
+                background-color: transparent;
+                border: none;
+                color: inherit;
+            }
+            
+            .titulo{
+                color: limegreen;
+                font-size: 80px;
+                text-align: center;
+            }
+            .texto{
+                font-size: 20px;
+                text-align: center;
+            }
+        </style>
+</html>
